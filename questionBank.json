@@ -1,0 +1,479 @@
+{
+  "warmUp": [
+  {
+    "questionID": 1,
+    "text": "Какая страна является самой большой по площади?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Россия", "isCorrect": true },
+    {"id": 2, "text": "США", "isCorrect": false},
+    {"id": 3, "text": "Китай", "isCorrect": false },
+    {"id": 4, "text": "Бразилия", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 2,
+    "text": "Какой язык является самым распространенным в мире?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Китайский", "isCorrect": false },
+    {"id": 2, "text": "Английский", "isCorrect": true},
+    {"id": 3, "text": "Испанский", "isCorrect": false },
+    {"id": 4, "text": "Арабский", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 3,
+    "text": "Какой океан самый большой по площади?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Тихий", "isCorrect": true },
+    {"id": 2, "text": "Атлантический", "isCorrect": false},
+    {"id": 3, "text": "Индийский", "isCorrect": false },
+    {"id": 4, "text": "Северный Ледовитый", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 4,
+    "text": "Какое дерево является символом Канады?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Дуб", "isCorrect": false },
+    {"id": 2, "text": "Береза", "isCorrect": false},
+    {"id": 3, "text": "Клен", "isCorrect": true },
+    {"id": 4, "text": "Сосна", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 5,
+    "text": "Какое море считается самым соленным на планете?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Красное море", "isCorrect": false },
+    {"id": 2, "text": "Черное море", "isCorrect": false },
+    {"id": 3, "text": "Средиземное море", "isCorrect": false },
+    {"id": 4, "text": "Каспийское море", "isCorrect": true }
+    ]
+  },
+  {
+    "questionID": 6,
+    "text": "В каком году произошло изобретение телефона?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "1876", "isCorrect": true },
+    {"id": 2, "text": "1901", "isCorrect": false},
+    {"id": 3, "text": "1850", "isCorrect": false },
+    {"id": 4, "text": "1923", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 7,
+    "text": "Какой химический элемент является самым легким?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Углерод", "isCorrect": false },
+    {"id": 2, "text": "Водород", "isCorrect": true},
+    {"id": 3, "text": "Кислород", "isCorrect": false },
+    {"id": 4, "text": "Неон", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 8,
+    "text": "Какой город является столицей Франции?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Милан", "isCorrect": false },
+    {"id": 2, "text": "Лондон", "isCorrect": false},
+    {"id": 3, "text": "Рим", "isCorrect": false },
+    {"id": 4, "text": "Париж", "isCorrect": true }
+    ]
+  },
+  {
+    "questionID": 9,
+    "text": "Как называется космический аппарат, запущенный человеком в космос впервые?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Спутник-1", "isCorrect": false },
+    {"id": 2, "text": "Восток-1", "isCorrect": true},
+    {"id": 3, "text": "Аполлон-11", "isCorrect": false },
+    {"id": 4, "text": "Меркурий-3", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 10,
+    "text": "Как называется самая длинная река в мире?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Нил", "isCorrect": false },
+    {"id": 2, "text": "Амазонка", "isCorrect": true},
+    {"id": 3, "text": "Янцзы", "isCorrect": false },
+    {"id": 4, "text": "Миссисипи", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 11,
+    "text": "Какая страна является родиной пасты Carbonara?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Франция", "isCorrect": false },
+    {"id": 2, "text": "Италия", "isCorrect": true},
+    {"id": 3, "text": "Испания", "isCorrect": false },
+    {"id": 4, "text": "Греция", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 12,
+    "text": "Какая планета в солнечной системе самая большая по размеру?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Марс", "isCorrect": false },
+    {"id": 2, "text": "Юпитер", "isCorrect": true},
+    {"id": 3, "text": "Венера", "isCorrect": false },
+    {"id": 4, "text": "Нептун", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 13,
+    "text": "Какой из этих городов является столицей Германии?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Мюнхен", "isCorrect": false },
+    {"id": 2, "text": "Гамбург", "isCorrect": false},
+    {"id": 3, "text": "Берлин", "isCorrect": true },
+    {"id": 4, "text": "Кёльн", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 14,
+    "text": "Какая страна является родиной танго?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Италия", "isCorrect": false },
+    {"id": 2, "text": "Франция", "isCorrect": false},
+    {"id": 3, "text": "Аргентина", "isCorrect": true },
+    {"id": 4, "text": "Испания", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 15,
+    "text": "Сколько континентов на планете Земля?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "5", "isCorrect": false },
+    {"id": 2, "text": "6", "isCorrect": true},
+    {"id": 3, "text": "7", "isCorrect": false },
+    {"id": 4, "text": "8", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 16,
+    "text": "Какая из этих стран не имеет собственного национального флага?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Япония", "isCorrect": false },
+    {"id": 2, "text": "Израиль", "isCorrect": false},
+    {"id": 3, "text": "Монако", "isCorrect": false },
+    {"id": 4, "text": "Западная Сахара", "isCorrect": true }
+    ]
+  },
+  {
+    "questionID": 17,
+    "text": "Какой океан встречается наиболее северно?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Тихий", "isCorrect": false },
+    {"id": 2, "text": "Атлантический", "isCorrect": false},
+    {"id": 3, "text": "Северный Ледовитый", "isCorrect": true },
+    {"id": 4, "text": "Индийский", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 18,
+    "text": "Какой город является столицей Испании?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Мадрид", "isCorrect": true },
+    {"id": 2, "text": "Барселона", "isCorrect": false},
+    {"id": 3, "text": "Севилья", "isCorrect": false },
+    {"id": 4, "text": "Валенсия", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 19,
+    "text": "Как называется самая высокая гора в мире?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Денали", "isCorrect": false },
+    {"id": 2, "text": "Макинли", "isCorrect": false},
+    {"id": 3, "text": "Джомолунгма", "isCorrect": true },
+    {"id": 4, "text": "Килиманджаро", "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 20,
+    "text": "Какой город является столицей России?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": "Санкт-Петербург", "isCorrect": false },
+    {"id": 2, "text": "Екатеринбург", "isCorrect": false},
+    {"id": 3, "text": "Казань", "isCorrect": false },
+    {"id": 4, "text": "Москва", "isCorrect": true }
+    ]
+  }
+  ],
+  "WWW": [
+  {
+    "questionID": 1,
+    "text": "Какое животное является символом России?",
+    "hasOptions": false,
+    "answer": "Медведь"
+  },
+  {
+    "questionID": 3,
+    "text": "Кто написал произведение 'Война и мир'?",
+    "hasOptions": false,
+    "answer": "Лев Толстой"
+  },
+  {
+    "questionID": 6,
+    "text": "Сколько планет в Солнечной системе?",
+    "hasOptions": false,
+    "answer": "8"
+  },
+  {
+    "questionID": 10,
+    "text": "Кто изображен на американской купюре в 100 долларов?",
+    "hasOptions": false,
+    "answer": "Франклин"
+  },
+  {
+    "questionID": 11,
+    "text": "Как называется самая большая планета Солнечной системы?",
+    "hasOptions": false,
+    "answer": "Юпитер"
+  },
+  {
+    "questionID": 12,
+    "text": "Кто написал произведение 'Преступление и наказание'?",
+    "hasOptions": false,
+    "answer": "Достоевский"
+  },
+  {
+    "questionID": 14,
+    "text": "Как называется самая высокая гора в Африке?",
+    "hasOptions": false,
+    "answer": "Килиманджаро"
+  },
+  {
+    "questionID": 15,
+    "text": "Какой континент является самым холодным на Земле?",
+    "hasOptions": false,
+    "answer": "Антарктида"
+  },
+  {
+    "questionID": 16,
+    "text": "Как называется самая большая пустыня в мире?",
+    "hasOptions": false,
+    "answer": "Сахара"
+  },
+  {
+    "questionID": 17,
+    "text": "Какой газ является основным составляющим атмосферы Земли?",
+    "hasOptions": false,
+    "answer": "Азот"
+  },
+  {
+    "questionID": 18,
+    "text": "Какой металл является самым распространенным в земной коре?",
+    "hasOptions": false,
+    "answer": "Алюминий"
+  },
+  {
+    "questionID": 19,
+    "text": "Как называется самое глубокое озеро в мире?",
+    "hasOptions": false,
+    "answer": "Байкал"
+  },
+  {
+    "questionID": 20,
+    "text": "Как называется самый крупный океан на Земле?",
+    "hasOptions": false,
+    "answer": "Тихий"
+  }
+  ],
+  "dates": [
+  {
+    "questionID": 1,
+    "text": "В каком году произошло Великое французское революция?»",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1776, "isCorrect": false },
+    {"id": 2, "text": 1789, "isCorrect": true},
+    {"id": 3, "text": 1804, "isCorrect": false },
+    {"id": 4, "text": 1821, "isCorrect": false }
+    ]
+  },
+  {
+    "questionID": 2,
+    "text": "В каком году была подписана Декларация независимости США?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1776, "isCorrect": true },
+    {"id": 2, "text": 1789, "isCorrect": false},
+    {"id": 3, "text": 1804, "isCorrect": false },
+    {"id": 4, "text": 1821, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 3,
+    "text": "В каком году произошло крещение Руси?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 988, "isCorrect": true },
+    {"id": 2, "text": 1054, "isCorrect": false},
+    {"id": 3, "text": 1120, "isCorrect": false },
+    {"id": 4, "text": 1200, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 4,
+    "text": "В каком году началась Первая мировая война?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1914, "isCorrect": true },
+    {"id": 2, "text": 1918, "isCorrect": false},
+    {"id": 3, "text": 1922, "isCorrect": false },
+    {"id": 4, "text": 1939, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 5,
+    "text": "В каком году была подписана Конституция США?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1787, "isCorrect": true },
+    {"id": 2, "text": 1776, "isCorrect": false},
+    {"id": 3, "text": 1791, "isCorrect": false },
+    {"id": 4, "text": 1804, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 6,
+    "text": "В каком году состоялась Октябрьская революция в России?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1917, "isCorrect": true },
+    {"id": 2, "text": 1914, "isCorrect": false},
+    {"id": 3, "text": 1922, "isCorrect": false },
+    {"id": 4, "text": 1939, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 7,
+    "text": "В каком году было подписано Пермское соглашение между Россией и Швецией?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1721, "isCorrect": true },
+    {"id": 2, "text": 1689, "isCorrect": false},
+    {"id": 3, "text": 1756, "isCorrect": false },
+    {"id": 4, "text": 1791, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 8,
+    "text": "В каком году началась Вторая мировая война?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1939, "isCorrect": true },
+    {"id": 2, "text": 1941, "isCorrect": false},
+    {"id": 3, "text": 1945, "isCorrect": false },
+    {"id": 4, "text": 1950, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 9,
+    "text": "В каком году была подписана Декларация о правах человека и гражданина?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1789, "isCorrect": true },
+    {"id": 2, "text": 1776, "isCorrect": false},
+    {"id": 3, "text": 1791, "isCorrect": false },
+    {"id": 4, "text": 1804, "isCorrect": false }
+    ]
+},
+{
+    "questionID": 10,
+    "text": "В каком году была заключена Ялтинская конференция между СССР, США и Великобританией?",
+    "hasOptions": true,
+    "options": [
+    {"id": 1, "text": 1945, "isCorrect": true },
+    {"id": 2, "text": 1941, "isCorrect": false},
+    {"id": 3, "text": 1949, "isCorrect": false },
+    {"id": 4, "text": 1950, "isCorrect": false }
+    ]
+},
+{
+  "questionID": 11,
+  "text": "В каком году было подписано Великое Хартийское письмо, ограничивающее власть английского короля?",
+  "hasOptions": false,
+  "answer": "1215"
+},
+{
+  "questionID": 12,
+  "text": "В каком году началась Крымская война между Россией и союзом европейских держав?",
+  "hasOptions": false,
+  "answer": "1853"
+},
+{
+  "questionID": 13,
+  "text": "В каком году произошло восстание декабристов в России?",
+  "hasOptions": false,
+  "answer": "1825"
+},
+{
+  "questionID": 14,
+  "text": "В каком году состоялась вторая мировая война?",
+  "hasOptions": false,
+  "answer": "1939"
+},
+{
+  "questionID": 15,
+  "text": "В каком году была провозглашена независимость Индии от Британской империи?",
+  "hasOptions": false,
+  "answer": "1947"
+},
+{
+  "questionID": 16,
+  "text": "В каком году произошло знаменитое Восстание в Варшаве?",
+  "hasOptions": false,
+  "answer": "1944"
+},
+{
+  "questionID": 17,
+  "text": "В каком году была подписана Декларация о независимости США?",
+  "hasOptions": false,
+  "answer": "1776"
+},
+{
+  "questionID": 18,
+  "text": "В каком году началась Кубинская революция под руководством Фиделя Кастро?",
+  "hasOptions": false,
+  "answer": "1953"
+},
+{
+  "questionID": 19,
+  "text": "В каком году произошла Русско-японская война?",
+  "hasOptions": false,
+  "answer": "1904"
+},
+{
+  "questionID": 20,
+  "text": "В каком году была принята Всеобщая декларация прав человека?",
+  "hasOptions": false,
+  "answer": "1948"
+}
+  ],
+  "media": [
+
+  ]
+}
