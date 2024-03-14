@@ -10,12 +10,11 @@ const topics = {
 const getRandomQuestion = (topic) => {
   const questionTopic = topic;
   const randomID = Math.floor(Math.random() * questions[questionTopic].length);
-  return questions[questionTopic][randomID]
+  return {question: questions[questionTopic][randomID], index: randomID}
 }
 
 const getCorrectAnswer = (topic, id) => {
   const question = questions[topic].find((question) => question.questionID === id);
-  console.log(question.options)
   if (!question.hasOptions) {
     return question.answer
   } 
