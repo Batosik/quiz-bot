@@ -474,6 +474,11 @@
 }
   ],
   "media": [
-
+    {
+      "questionID": 1,
+      "text": "Не успел",
+      "hasOptions": false,
+      "answer": "Медведь"
+    }
   ]
 }

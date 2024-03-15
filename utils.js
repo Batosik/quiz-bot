@@ -10,7 +10,7 @@ const topics = {
 const getRandomQuestion = (topic) => {
   const questionTopic = topic;
   const randomID = Math.floor(Math.random() * questions[questionTopic].length);
-  return {question: questions[questionTopic][randomID], index: randomID}
+  return questions[questionTopic][randomID]
 }
 
 const getCorrectAnswer = (topic, id) => {

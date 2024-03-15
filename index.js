@@ -29,66 +29,6 @@ bot.callbackQuery("Да!", async (ctx) => {
   }, 3000);
 })
 
-
-bot.use(
-  session({
-    initial: () => ({
-      currentQuestionIndex: 0,
-      score: 0,
-      WWWNumber: 0
-    }),
-  })
-)
-
-
-bot.callbackQuery('Поехали', async (ctx) => {
-  await ctx.answerCallbackQuery()
-  await ctx.reply('/startquiz')
-})
-
-const quizComposer = new Composer(bot)
-
-quizComposer.command("startquiz", async (ctx) => {
-  ctx.session.currentQuestionIndex = 0
-  ctx.session.score = 0
-  ctx.session.WWWNumber = 0
-  await ctx.reply("Первый раунд")
-  await askQuestion(ctx)
-})
-
-async function askQuestion(ctx) {
-  if (ctx.session.WWWNumber < 5) {
-    const question = getRandomQuestion('WWW').question
-    await ctx.reply(question.text)
-    ctx.api.sendMessage(ctx.chat.id, question.text)
-    await ctx.reply("Enter your answer:")
-    quizComposer.on('text', async (ctx) => {
-      const userAnswer = ctx.message.text.trim().toLowerCase()
-      const correctAnswer = question.answer.toLowerCase()
-      
-      if (userAnswer === correctAnswer) {
-        ctx.session.score += 20
-        await ctx.reply('👍')
-      } else {
-        await ctx.reply('❌')
-        await ctx.reply(`Правильный ответ: ${correctAnswer} `)
-      }
-      ctx.session.WWWNumber += 1
-      await askQuestion(ctx)
-    })
-  } else {
-    await ctx.reply(`Раунд завершен! Ты набрал ${ctx.session.score} `)
-  }
-}
-
-quizComposer.command("stop", async (ctx) => {
-  await ctx.reply("Quiz stopped.")
-  ctx.session.currentQuestionIndex = 0
-})
-
-bot.use(quizComposer)
-
-
 bot.callbackQuery("Потренеруюсь 🤯", async (ctx) => {
   await ctx.answerCallbackQuery()
   const trainKeyboard = new Keyboard()
@@ -103,6 +43,134 @@ bot.callbackQuery("Потренеруюсь 🤯", async (ctx) => {
     reply_markup: trainKeyboard
   })
 })
+
+bot.callbackQuery('Поехали', async (ctx) => {
+  await ctx.answerCallbackQuery()
+  await ctx.reply('Нажми /startquiz')
+})
+
+function initial() {
+  return {
+    currentQuestionIndex: 0,
+    score: 0,
+    WWW: 0,
+    warmUp: 0,
+    dates: 0,
+    pizzaCount: 0
+  };
+}
+
+bot.use(session({ initial }));
+
+const quizComposer = new Composer();
+
+let quizSet = {question: 0, correctAnswer: 0, currentRound: 0, round: {warmUp: 10, WWW: 20, dates: 15}}
+const roundsQuantity = 4
+
+// bot.command("hunger", async (ctx) => {
+//   const count = ctx.session.pizzaCount;
+//   await ctx.reply(`Your hunger level is ${count}!`);
+//   console.log(ctx.from)
+//   console.log(ctx.session)
+// });
+
+// bot.hears(/.*🍕.*/, (ctx) => ctx.session.pizzaCount++);
+
+async function askQuestion(ctx) {
+  if (ctx.session.warmUp < roundsQuantity) {
+    let game = 'warmUp'
+    quizSet.currentRound = 'warmUp'
+    let question = getRandomQuestion(game)
+    let inlineKeyboard;
+    const buttonRows = question.options.map((option) => [
+      InlineKeyboard.text(
+        option.text,
+        JSON.stringify({
+          type: `${game}-option`,
+          qID: question.questionID,
+          isCorrect: option.isCorrect,
+        }),
+      ),
+    ]);
+    inlineKeyboard = InlineKeyboard.from(buttonRows);
+    await ctx.reply(question.text, {
+      reply_markup: inlineKeyboard,
+    });
+  }
+if (ctx.session.WWW < roundsQuantity && ctx.session.warmUp === roundsQuantity) {
+    if (ctx.session.WWW === 0){
+      await ctx.reply(`Раунд завершен! Ты набрал ${ctx.session.score} баллов`);
+      await ctx.reply ('🥁')
+      await ctx.reply('Второй раунд');
+      quizSet.currentRound = 'WWW';
+    }
+      game = 'WWW'
+      question = getRandomQuestion(game)
+      await ctx.reply(question.text)
+      let correctAnswer = getCorrectAnswer(game, question.questionID)
+      quizSet.question = question
+      quizSet.correctAnswer = correctAnswer
+  }
+  if (ctx.session.WWW === roundsQuantity && ctx.session.dates < roundsQuantity) {
+    let game = 'dates'
+    if (ctx.session.dates === 0){
+      await ctx.reply(`Раунд завершен! Ты набрал ${ctx.session.score} баллов`);
+      await ctx.reply ('🥁')
+      await ctx.reply('Третий раунд');
+      quizSet.currentRound = 'dates';
+    }
+    question = getRandomQuestion(game)
+    if (question.hasOptions) { 
+      let inlineKeyboard;
+      const buttonRows = question.options.map((option) => [
+        InlineKeyboard.text(
+          option.text,
+          JSON.stringify({
+            type: `${game}-option`,
+            qID: question.questionID,
+            isCorrect: option.isCorrect,
+          }),
+        ),
+      ]);
+    inlineKeyboard = InlineKeyboard.from(buttonRows);
+    await ctx.reply(question.text, {
+      reply_markup: inlineKeyboard,
+    });
+
+    } else {
+      await ctx.reply(question.text)
+      let correctAnswer = getCorrectAnswer(game, question.questionID)
+      quizSet.question = question
+      quizSet.correctAnswer = correctAnswer
+    }
+  }
+  if (ctx.session.dates === roundsQuantity) {
+    await ctx.reply(`Игра подошла к концу 🙌. Ты набрал ${ctx.session.score} баллов. Спасибо за игру!`)
+  }
+}
+
+
+bot.on('callback_query:data' , async (ctx) => {
+  const callbackData = JSON.parse(ctx.callbackQuery.data)
+  let game = quizSet.currentRound
+  if (callbackData.isCorrect) {
+    await ctx.answerCallbackQuery()
+    await ctx.reply("👍")
+    ctx.session.score += Number(quizSet.round[game])
+  } else {  
+    await ctx.answerCallbackQuery()
+    const answer = getCorrectAnswer(callbackData.type.split('-')[0], callbackData.qID);
+    await ctx.reply(`❌`)
+    await ctx.reply(`Правильный ответ: ${answer} `)
+  }
+  ctx.session[game] += 1
+  await askQuestion(ctx);
+})
+
+quizComposer.command('startquiz', async (ctx) => {
+  await ctx.reply("Первый раунд");
+  askQuestion(ctx);
+});
 
 bot.command('training', async (ctx) => {
   const trainKeyboard = new Keyboard()
@@ -120,7 +188,7 @@ bot.command('training', async (ctx) => {
 
 bot.hears(['Разминка', 'ЧГК', 'Даты', 'Медиа'], async (ctx) => {
   const topic = topics[ctx.message.text];
-  const question = getRandomQuestion(topic).question;
+  const question = getRandomQuestion(topic);
   
   let inlineKeyboard;
 
@@ -136,6 +204,8 @@ bot.hears(['Разминка', 'ЧГК', 'Даты', 'Медиа'], async (ctx) 
       ),
     ]);
   inlineKeyboard = InlineKeyboard.from(buttonRows);
+  } else {
+    inlineKeyboard = InlineKeyboard.text('Узнать ответ')
   }
   await ctx.reply(question.text, {
     reply_markup: inlineKeyboard,
@@ -161,8 +231,26 @@ bot.on('callback_query:data' , async (ctx) => {
   const answer = getCorrectAnswer(callbackData.type.split('-')[0], callbackData.qID);
   await ctx.reply(`❌`)
   await ctx.reply(`Правильный ответ: ${answer} `)
+
   await ctx.answerCallbackQuery();
 })
+
+quizComposer.on("message:text", async (ctx) => {
+  let userAnswer = ctx.message.text.trim().toLowerCase()
+  let correctAnswer = quizSet.correctAnswer
+  let game = quizSet.currentRound
+  if (userAnswer === correctAnswer.toLowerCase()) {
+    ctx.session.score += Number(quizSet.round[game])
+    await ctx.reply('👍')
+  } else {
+    await ctx.reply('❌')
+    await ctx.reply(`Правильный ответ: ${correctAnswer} `)
+  }
+  ctx.session[game] += 1
+  await askQuestion(ctx)
+})
+
+bot.use(quizComposer)
 
 bot.catch((err) => {
   const ctx = err.ctx;
