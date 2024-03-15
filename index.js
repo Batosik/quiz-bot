@@ -53,7 +53,7 @@ bot.command("rules", async (ctx) => {
 })
 
 bot.command("rating", async (ctx) => {
-  const plase = Number(userDB.place) + 1
+  const plase = Number(userDB.place(ctx.from.id)) + 1
   await ctx.reply(`Твое место в турнирной таблице ${plase}!`)
 })
 
