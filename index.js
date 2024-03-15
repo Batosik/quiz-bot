@@ -1,8 +1,32 @@
 require('dotenv').config()
-const {Bot, Keyboard, InlineKeyboard, GrammyError, HttpError, SessionFlavor, session, Composer } = require('grammy')
+const {Bot, Keyboard, InlineKeyboard, GrammyError, HttpError, session, Composer } = require('grammy')
 const {getRandomQuestion, getCorrectAnswer, topics} = require('./utils');
+const { userDB } = require('./users')
 
 const bot = new Bot(process.env.BOT_API_KEY);
+
+bot.api.setMyCommands([
+  {
+    command: 'start',
+    description: 'Запуск бота'
+  },
+  {
+    command: 'startquiz',
+    description: 'Начало квиза'
+  },
+  {
+    command: 'rules',
+    description: 'Правила игры'
+  },
+  {
+    command: 'rating',
+    description: 'Твое место в рейтинге'
+  },
+  {
+    command: 'top',
+    description: 'Лидеры турнира SOON'
+  }
+])
 
 bot.command('start', async (ctx) => {
   const startKeyboard = new InlineKeyboard()
@@ -13,6 +37,24 @@ bot.command('start', async (ctx) => {
     'Привет! 👋 \nДобро пожаловать на квиз! \nЯ буду твоим проводником в этом увлекательном путешествии по вопросам и ответам. Вместе мы прокачаем твои навыки! 🧠 \nГотов начать игру?' ,
     { reply_markup: startKeyboard
     })
+})
+
+bot.command("rules", async (ctx) => {
+  await ctx.reply('Игра состоит из 3 блоков вопросов - Разминка, ЧГК и Даты. В каждом блоке по 4 вопроса.')
+  setTimeout(() => {
+    ctx.reply('Вопросы из блока\nРазминка - 10 баллов \nДаты - 15 баллов\nЧГК - 20 баллов.');
+  }, 1000);
+  setTimeout(() => {
+    ctx.reply('Давай начнем?', {
+      reply_markup: new InlineKeyboard()
+      .text('Поехали')
+    });
+  }, 3000);
+})
+
+bot.command("rating", async (ctx) => {
+  const plase = Number(userDB.place) + 1
+  await ctx.reply(`Твое место в турнирной таблице ${plase}!`)
 })
 
 bot.callbackQuery("Да!", async (ctx) => {
@@ -67,14 +109,15 @@ const quizComposer = new Composer();
 let quizSet = {question: 0, correctAnswer: 0, currentRound: 0, round: {warmUp: 10, WWW: 20, dates: 15}}
 const roundsQuantity = 4
 
-// bot.command("hunger", async (ctx) => {
-//   const count = ctx.session.pizzaCount;
-//   await ctx.reply(`Your hunger level is ${count}!`);
-//   console.log(ctx.from)
-//   console.log(ctx.session)
-// });
+bot.command("hunger", async (ctx) => {
+  const count = ctx.session.pizzaCount;
+  await ctx.reply(`Your hunger level is ${count}!`);
+  console.log(ctx.from)
+  console.log(ctx.session)
+  userDB.show()
+});
 
-// bot.hears(/.*🍕.*/, (ctx) => ctx.session.pizzaCount++);
+bot.hears(/.*🍕.*/, (ctx) => ctx.session.pizzaCount++);
 
 async function askQuestion(ctx) {
   if (ctx.session.warmUp < roundsQuantity) {
@@ -146,6 +189,10 @@ if (ctx.session.WWW < roundsQuantity && ctx.session.warmUp === roundsQuantity) {
   }
   if (ctx.session.dates === roundsQuantity) {
     await ctx.reply(`Игра подошла к концу 🙌. Ты набрал ${ctx.session.score} баллов. Спасибо за игру!`)
+    userDB.update(ctx.from.id, ctx.from.first_name, ctx.session.score)
+    ctx.session.WWW = 0;
+    ctx.session.warmUp = 0;
+    ctx.session.dates = 0;
   }
 }
 
